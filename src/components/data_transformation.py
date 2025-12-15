@@ -14,7 +14,7 @@ import os
 
 from src.utils import save_object
 
-
+@dataclass
 class DataTransformationConfig:
     preprocessor_obj_file_path=os.path.join('artifacts',"preprocessor.pkl")
 
@@ -73,7 +73,7 @@ class DataTransformation:
         except Exception as e:
             raise CustomException(e,sys)
             
-    def initiate_data_tranformation(self,train_path,test_path):
+    def initiate_data_transformation(self,train_path,test_path):
 
         try:
             train_df=pd.read_csv(train_path)
@@ -113,7 +113,7 @@ class DataTransformation:
             return (
                 train_arr,
                 test_arr,
-                self.data_transformation_config.preprocessor_obj_file_path,
+                self.data_transformation_config.preprocessor_obj_file_path  
             )
 
         except Exception as e:
